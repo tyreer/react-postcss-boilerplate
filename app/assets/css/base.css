@@ -1,0 +1,22 @@
+:root {
+  --color-blue: #32c7ff;
+}
+
+@custom-media --tablet (min-width: 450px);
+@custom-media --desktop (min-width: 769px);
+
+body {
+  font-family: system-ui;
+  overflow: hidden;
+}
+
+
+/* Positions input labels out of view while remaining accessible to screen readers */
+.screen-reader-text {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
