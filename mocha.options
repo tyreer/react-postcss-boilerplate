@@ -1,0 +1,7 @@
+--require mocha-clean
+--require babel-register
+--require source-map-support/register
+--colors
+--recursive
+--require ./mocha.conf.js
+--ui bdd

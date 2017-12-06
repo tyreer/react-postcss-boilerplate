@@ -1,17 +1,19 @@
 {
-  "name": "react-scratch",
+  "name": "react-postcss-boilerplate",
   "version": "1.0.0",
-  "description": "An exercise in building a React app from scratch loosly following Tyler McGinnis's React Fundamentals course",
+  "description": "A React boilerplate using PostCSS-cssnext",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --open",
     "build": "NODE_ENV='production' webpack -p",
     "deploy": "npm run build && firebase deploy",
-    "firebase-init": "firebase login && firebase init"
+    "firebase-init": "firebase login && firebase init",
+    "test": "mocha --opts ./mocha.options ./app/**/*.test.js",
+    "test:watch": "npm run test -- -w"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tyreer/react-scratch.git"
+    "url": "git+https://github.com/tyreer/react-postcss-boilerplate.git"
   },
   "author": "Robert Tyree",
   "license": "ISC",
@@ -23,12 +25,11 @@
     "compact": true
   },
   "bugs": {
-    "url": "https://github.com/tyreer/react-scratch/issues"
+    "url": "https://github.com/tyreer/react-postcss-boilerplate/issues"
   },
-  "homepage": "https://github.com/tyreer/react-scratch#readme",
+  "homepage": "https://github.com/tyreer/react-postcss-boilerplate#readme",
   "dependencies": {
     "axios": "^0.16.1",
-    "caniuse-lite": "^1.0.30000697",
     "prop-types": "^15.5.8",
     "react": "^16.2.0",
     "react-dom": "^16.0.0",
@@ -40,7 +41,13 @@
     "babel-loader": "^7.0.0",
     "babel-preset-env": "^1.4.0",
     "babel-preset-react": "^6.24.1",
+    "caniuse-lite": "^1.0.30000780",
+    "chai": "^4.1.2",
+    "chai-enzyme": "^1.0.0-beta.0",
+    "cheerio": "^1.0.0-rc.2",
     "css-loader": "^0.28.0",
+    "enzyme": "^3.2.0",
+    "enzyme-adapter-react-16": "^1.1.0",
     "eslint": "^4.12.1",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-airbnb-base": "^12.1.0",
@@ -55,6 +62,10 @@
     "file-loader": "^0.11.2",
     "firebase-tools": "^3.9.2",
     "html-webpack-plugin": "^2.28.0",
+    "jsdom": "^11.5.1",
+    "jsdom-global": "^3.0.2",
+    "mocha": "^4.0.1",
+    "mocha-clean": "^1.0.0",
     "postcss": "^6.0.8",
     "postcss-cssnext": "^3.0.2",
     "postcss-import": "^10.0.0",
