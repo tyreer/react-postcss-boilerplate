@@ -1,5 +1,6 @@
 :root {
-  --color-blue: #32c7ff;
+  --color-black: #000;
+  --color-white: #fff;
 }
 
 @custom-media --tablet (min-width: 450px);
@@ -8,7 +9,6 @@
 body {
   font-family: system-ui;
 }
-
 
 /* Positions input labels out of view while remaining accessible to screen readers */
 .screen-reader-text {
