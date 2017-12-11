@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { testAPIGet } from '../../utils/api';
 
 export default class Form extends PureComponent {
   constructor(props) {
@@ -18,36 +19,49 @@ export default class Form extends PureComponent {
 
     this.setState({
       textInput: value,
+      fetchRepsonse: null,
     });
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    alert('Hello');
+
+    testAPIGet(this.state.textInput)
+      .then((data) => {
+        this.setState({
+          fetchRepsonse: data,
+        });
+      });
   }
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label
-          htmlFor="username"
-        >{this.props.label}
-        </label>
-        <input
-          type="text"
-          id="username"
-          placeholder="Enter any text"
-          value={this.state.textInput}
-          autoComplete="off"
-          onChange={this.handleChange}
-        />
-        <button
-          type="submit"
-          disabled={!this.state.textInput}
-        >
-          {this.props.buttonText}
-        </button>
-      </form>
+      <div>
+        <form onSubmit={this.handleSubmit}>
+          <label
+            htmlFor="anyText"
+          >{this.props.label}
+          </label>
+          <input
+            type="text"
+            id="anyText"
+            placeholder="Enter any text"
+            value={this.state.textInput}
+            autoComplete="off"
+            onChange={this.handleChange}
+          />
+          <button
+            type="submit"
+            disabled={!this.state.textInput}
+          >
+            {this.props.buttonText}
+          </button>
+        </form>
+
+        {!this.state.fetchRepsonse
+          ? <h3>No data</h3>
+          : <h3>{this.state.fetchRepsonse}</h3>}
+      </div>
     );
   }
 }
