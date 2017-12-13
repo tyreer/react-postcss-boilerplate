@@ -23,15 +23,17 @@ export default class Form extends PureComponent {
     });
   }
 
-  handleSubmit(event) {
+  async handleSubmit(event) {
     event.preventDefault();
 
-    testAPIGet(this.state.textInput)
-      .then((data) => {
-        this.setState({
-          fetchRepsonse: data,
-        });
+    try {
+      const data = await testAPIGet(this.state.textInput);
+      this.setState({
+        fetchRepsonse: data,
       });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   render() {

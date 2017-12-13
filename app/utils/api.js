@@ -1,11 +1,10 @@
-export function testAPIGet(userName) {
-  return fetch(`https://api.github.com/users/${userName}`)
-    .then((response) => {
-      if (response.ok) {
-        return response.json();
-      }
-      return Promise.reject(new Error(response.status));
-    })
-    .then(user => user.name)
-    .catch(error => `Sorry the API call returned ${error}`);
+export async function testAPIGet(userName) {
+  const response = await fetch(`https://api.github.com/users/${userName}`);
+  const returnedData = await response.json();
+
+  if (!response.ok || returnedData.error) {
+    throw new Error(returnedData.error || `Unknown error occurred (HTTP ${response.status})!`);
+  }
+
+  return returnedData.name;
 }
