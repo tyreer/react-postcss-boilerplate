@@ -19,21 +19,21 @@ export default class Form extends PureComponent {
 
     this.setState({
       textInput: value,
-      fetchRepsonse: null,
     });
   }
 
   async handleSubmit(event) {
     event.preventDefault();
 
-    try {
-      const data = await testAPIGet(this.state.textInput);
-      this.setState({
+    const data = await testAPIGet(this.state.textInput);
+
+    (data instanceof Error)
+      ? this.setState({
+        fetchRepsonse: data.message,
+      })
+      : this.setState({
         fetchRepsonse: data,
       });
-    } catch (error) {
-      console.log(error);
-    }
   }
 
   render() {
