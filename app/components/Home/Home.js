@@ -1,5 +1,6 @@
 import React from 'react';
 import RenderPropModel from '../RenderPropModel/RenderPropModel';
+import BasicComponentWithHOC from '../HOCModel/HOCModel';
 
 export default function Home() {
   return (
@@ -10,9 +11,14 @@ export default function Home() {
       <RenderPropModel render={({ x, y }) => (
         // The render prop gives us the state we need
         // to render whatever we want here.
-        <h1>The mouse position is ({x}, {y})</h1>
+        <div>
+          <h1>Via render prop:</h1>
+          <h2>The mouse position is ({x}, {y})</h2>
+        </div>
       )}
       />
+
+      <BasicComponentWithHOC />
     </div>
   );
 }
